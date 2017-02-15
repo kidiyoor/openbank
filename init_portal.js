@@ -60,7 +60,7 @@ prompt_lib.get(switch_opdk, function(err, results) {
 
         required_values.push({name: 'org', description: 'Enter the Apigee organization name', type: 'string'});
         required_values.push({name: 'mngt_uri', description: 'Enter the opdk management base uri', type: 'string'});
-        required_values.push({name: 'host', description: 'Enter the host name for portal', type: 'string'});
+        required_values.push({name: 'host', description: 'Enter the host name for portal, eg: portal.company.com (Assumed to be https)', type: 'string'});
         required_values.push({name: 'username', description: 'Enter the username for the org', type: 'string'});
         required_values.push({name: 'password', description: 'Enter the password', type: 'string'});
 
@@ -89,7 +89,7 @@ function post_prompt(err, results) {
 
 
     if(!onprem_flag){
-        inject_object.host = 'https://' + results['org'] + '-' + results['env'] + '.net'
+        inject_object.host = results['org'] + '-' + results['env'] + '.net'
     } else {
         inject_object.host = results['host'];
     }
